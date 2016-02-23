@@ -1,1 +1,26 @@
-<h1>My profile</h1>
+<form action="" (submit)="onSubmit(firstName.value, lastName.value, email.value, male.value || female.value )">
+    <div class="form-group">
+        <label class="control-label" for="">First Name <span class="require-field">*</span></label>
+        <input class="form-control" #firstName type="text">
+        <div class="help-block"></div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="">Last Name <span class="require-field">*</span></label>
+        <input class="form-control" #lastName type="text" >
+        <div class="help-block"></div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="email">Email <span class="require-field">*</span></label>
+        <input class="form-control" type="text" #email>
+        <div class="help-block"></div>
+    </div>
+    <label for="">Gender <span class="require-field">*</span></label>
+    <div class="form-group">
+        <label for="male">Male</label>
+        <input #male (click)="onGenderClick(male.value)" id="male" type="radio" name="radiobutton" value="Male" >
+        <label for="female">Female</label>
+        <input #female (click)="onGenderClick(female.value)" id="female" type="radio" name="radiobutton" value="Female" >
+        <div class="help-block"></div>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">Save</button>
+</form>
