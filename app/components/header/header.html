@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse">
+        <div class="logo pull-left">
+            <a [routerLink]="['/Post']"><img src="app/static/images/dist/logo.png"></a>
+        </div>
+        <ul class="nav nav-pills pull-right">
+            <li [class.active]="getLinkStyle('')">
+                <a [routerLink]="['/Post']">Articles</a>
+            </li>
+            <li [class.active]="getLinkStyle('/add_article')">
+                <a [routerLink]="['/AddArticle']">Add article</a>
+            </li>
+            <li [class.active]="getLinkStyle('/users')">
+                <a [routerLink]="['/Users']">Users</a>
+            </li>
+            <li [class.active]="getLinkStyle('/search')">
+                <a [routerLink]="['/Search']">Search</a>
+            </li>
+            <li [class.active]="getLinkStyle('/profile')">
+                <a [routerLink]="['/Profile']">My Profile</a>
+            </li>
+        </ul>
+    </div>
+</nav>

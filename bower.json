@@ -1,0 +1,24 @@
+{
+  "name": "angular2Blog",
+  "version": "1.0",
+  "homepage": "https://github.com/ratushnyak-k/angular2Blog",
+  "authors": [
+    "Konstantin Ratushnyak <ratushnyak@steelkiwi.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.6",
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}
