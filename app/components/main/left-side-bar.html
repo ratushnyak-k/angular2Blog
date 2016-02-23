@@ -1,0 +1,44 @@
+<div class="side-bar">
+    <div class="recent_posts">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h3>Recent posts:</h3></div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group" data-bind="foreach: posts">
+                    <li class="list-group-item">
+                        <a href="#" data-bind="text: post_header, attr : { href: 'article_detail.html'+'#'+$index() }"></a>
+                        <span class="badge">
+                                        <span data-bind="text: totalRate"></span> ★
+                        </span>
+                        <div class="author-wrap">Author:
+                            <a href="#" data-bind="text: author"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="best_posts">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h3>Best posts:</h3></div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group" data-bind='foreach: postByRate'>
+                    <li class="list-group-item">
+                        <a href="#" data-bind="text: post_header"></a>
+                        <span class="badge">
+                        <span data-bind="text: totalRate"></span> ★
+                        </span>
+                        <div class="author-wrap">Author:
+                            <a href="#" data-bind="text: author"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
