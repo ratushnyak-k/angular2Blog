@@ -1,1 +1,39 @@
-<h1>My profile</h1>
+<form action="" #f="ngForm" (submit)="saveMyProfile($event)">
+    <div *ngIf="!isEdit">
+        <div class="form-group">
+            <label class="control-label" for="">First Name<span class="require-field">*</span></label>
+            <input class="form-control" [(ngModel)]="myProfileObj.firstName" required type="text">
+            <div class="help-block"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="">Last Name<span class="require-field">*</span></label>
+            <input class="form-control" [(ngModel)]="myProfileObj.lastName" required type="text" >
+            <div class="help-block"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="email">Email<span class="require-field">*</span></label>
+            <input class="form-control" type="text" [(ngModel)]="myProfileObj.email" required>
+            <div class="help-block"></div>
+        </div>
+        <label for="">Gender<span class="require-field">*</span></label>
+        <div class="form-group">
+            <label for="male">Male</label>
+            <input (change)="myProfileObj.gender = 'Male'" [checked]="myProfileObj.gender == 'Male'" #male required id="male" type="radio" name="radiobutton" value="true" >
+            <label for="female">Female</label>
+            <input (change)="myProfileObj.gender = 'Female'" [checked]="myProfileObj.gender == 'Female'" #female required id="female" type="radio" name="radiobutton" value="false" >
+            <div class="help-block"></div>
+        </div>
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+    </div>
+</form>
+<div *ngIf="isEdit" class="readable">
+    <div class="form-group">
+        <h1>{{ myProfileObj.firstName + ' ' + myProfileObj.lastName }}</h1>
+        <a href="#" (click)="editMyProfile($event)">Edit</a>
+    </div>
+    Email:
+    <span>{{ myProfileObj.email }}</span>
+    <br>
+    Gender:
+    <span>{{ myProfileObj.gender }}</span>
+</div>

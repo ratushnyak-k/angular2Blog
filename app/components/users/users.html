@@ -1,1 +1,11 @@
-<h1>Users</h1>
+<div class="main" id="users">
+    <ul class="user list-group" >
+        <li class="list-group-item" *ngFor="#user of users">
+            <img src="{{user.ava}}" alt="">
+            <h2> {{user.firstName}}</h2> Age: <span></span>
+            <br> Gender: {{user.gender}}
+            <br> Email: {{user.email}}
+            <br> Count of articles: <span></span>
+        </li>
+    </ul>
+</div>
