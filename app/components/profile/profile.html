@@ -1,4 +1,4 @@
-<form action="" #f="ngForm" (submit)="toggleEdit($event)">
+<form action="" #f="ngForm" (submit)="saveMyProfile($event)">
     <div *ngIf="!isEdit">
         <div class="form-group">
             <label class="control-label" for="">First Name<span class="require-field">*</span></label>
@@ -29,7 +29,7 @@
 <div *ngIf="isEdit" class="readable">
     <div class="form-group">
         <h1>{{ myProfileObj.firstName + ' ' + myProfileObj.lastName }}</h1>
-        <a href="#" (click)="toggleEdit($event)">Edit</a>
+        <a href="#" (click)="editMyProfile($event)">Edit</a>
     </div>
     Email:
     <span>{{ myProfileObj.email }}</span>
