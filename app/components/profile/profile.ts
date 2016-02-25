@@ -8,14 +8,12 @@ import { Component, Injectable } from 'angular2/core';
 
 
 export class MyProfile {
-    firstName;
-    lastName;
-    email;
-    gender;
-    onSubmit(f, l, e, g):void{
-        console.log(f, l, e, g);
-    }
-    onGenderClick(a):void{
-        console.log(a)
+
+    myProfileObj: Object = {};
+    isEdit:boolean = false;
+
+    toggleEdit(e) {
+        e.preventDefault();
+        this.isEdit = !this.isEdit;
     }
 }
