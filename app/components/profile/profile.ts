@@ -10,7 +10,7 @@ import { UsersModel } from '../users/userModel';
 
 export class MyProfile {
     avaInput;
-    myProfileObj: UsersModel = new UsersModel('', '', '', '');
+    myProfileObj: UsersModel = new UsersModel('', '', '', '', './app/static/images/dist/no_ava.png');
     isEdit: boolean = false;
     self;
     croppedPhoto;
@@ -24,7 +24,9 @@ export class MyProfile {
     saveMyProfile(e) {
         e.preventDefault();
         this.isEdit = true;
-        this.myProfileObj.ava = self.croppedPhoto;
+        if (self.croppedPhoto){
+            this.myProfileObj.ava = self.croppedPhoto;
+        }
         localStorage.setItem('myInfo', JSON.stringify(this.myProfileObj));
     }
     editMyProfile(e) {
