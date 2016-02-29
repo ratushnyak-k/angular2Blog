@@ -1,1 +1,30 @@
-<h1>Add article</h1>
+<div class="new_article">
+    <form action="" (submit)="addNewArticle($event)">
+        <div *ngIf="!isEdit">
+            <div class="form-group">
+                <label for="">Title</label>
+                <input class="form-control" type="text" required [(ngModel)]="myNewArticle.title" >
+            </div>
+            <div class="form-group">
+                <img src="{{myNewArticle.img}}" *ngIf="myNewArticle.img">
+                <input type="file" accept="image/png" (change)="readURL($event.target)" accept="image/png">
+            </div>
+            <div class="form-group">
+                <label for="">Your text</label>
+                <textarea class="form-control" required [(ngModel)]="myNewArticle.text"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Add new article</button>
+        </div>
+    </form>
+    <div class="readable" *ngIf="isEdit">
+        <div class="input-wrapper">
+            <h1>{{ myNewArticle.title }}</h1>
+        </div>
+        <div class="input-wrapper">
+            <img src="{{myNewArticle.img}}" *ngIf="myNewArticle.img" alt="">
+        </div>
+        <div class="input-wrapper">
+            <p>{{ myNewArticle.text }}</p>
+        </div>
+    </div>
+</div>

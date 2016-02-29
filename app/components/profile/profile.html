@@ -1,4 +1,4 @@
-<form action="" #f="ngForm" (submit)="saveMyProfile($event)">
+<form action="" (submit)="saveMyProfile($event)">
     <div *ngIf="!isEdit">
         <div class="form-group">
             <label class="control-label" for="">First Name<span class="require-field">*</span></label>
@@ -8,6 +8,15 @@
         <div class="form-group">
             <label class="control-label" for="">Last Name<span class="require-field">*</span></label>
             <input class="form-control" [(ngModel)]="myProfileObj.lastName" required type="text" >
+            <div class="help-block"></div>
+        </div>
+        <div class="form-group">
+            <label for="">Choose your avatar</label>
+            <div class="crop-image-wrapper">
+                <img class="future-ava" src="{{myProfileObj.ava}}" alt="" >
+            </div>
+            <input class="" type="file" accept="image/png" (change)="readURL($event.target)">
+            <div class="btn btn-primary upload-result">Crop</div>
             <div class="help-block"></div>
         </div>
         <div class="form-group">
@@ -30,6 +39,8 @@
     <div class="form-group">
         <h1>{{ myProfileObj.firstName + ' ' + myProfileObj.lastName }}</h1>
         <a href="#" (click)="editMyProfile($event)">Edit</a>
+        <br>
+        <img src="{{myProfileObj.ava}}" style="width: 200px;">
     </div>
     Email:
     <span>{{ myProfileObj.email }}</span>

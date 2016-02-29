@@ -3,17 +3,18 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <h3>Recent posts:</h3></div>
+                    <h3>Recent posts:</h3>
+                </div>
             </div>
             <div class="panel-body">
-                <ul class="list-group" data-bind="foreach: posts">
-                    <li class="list-group-item">
-                        <a href="#" data-bind="text: post_header, attr : { href: 'article_detail.html'+'#'+$index() }"></a>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="#post of postsList">
+                        <a href="#">{{post.title}}</a>
                         <span class="badge">
-                                        <span data-bind="text: totalRate"></span> ★
+                        <span>{{post.totalRate}}</span> ★
                         </span>
                         <div class="author-wrap">Author:
-                            <a href="#" data-bind="text: author"></a>
+                            <a href="#">{{post.author}}</a>
                         </div>
                     </li>
                 </ul>
@@ -27,14 +28,14 @@
                     <h3>Best posts:</h3></div>
             </div>
             <div class="panel-body">
-                <ul class="list-group" data-bind='foreach: postByRate'>
-                    <li class="list-group-item">
-                        <a href="#" data-bind="text: post_header"></a>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="#ratePost of ratePostsList">
+                        <a href="#">{{ ratePost.title }}</a>
                         <span class="badge">
-                        <span data-bind="text: totalRate"></span> ★
+                        <span>{{ratePost.totalRate}}</span> ★
                         </span>
                         <div class="author-wrap">Author:
-                            <a href="#" data-bind="text: author"></a>
+                            <a>{{ ratePost.author }}</a>
                         </div>
                     </li>
                 </ul>

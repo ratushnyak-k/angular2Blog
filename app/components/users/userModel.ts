@@ -1,10 +1,10 @@
 export class UsersModel {
-
     constructor(
-        private firstName: string,
-        private lastName: string,
-        private email: string,
-        private gender: string,
-        private ava: string
+        public firstName: string,
+        public lastName: string,
+        public email: string,
+        public gender: string,
+        public ava: string = './app/static/images/dist/no_ava.png'
         ) {}
 }
+

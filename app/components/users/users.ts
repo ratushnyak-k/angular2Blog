@@ -16,4 +16,11 @@ export class Users {
         new UsersModel('Artem', 'Anc', 'email@email.com', 'Male', './app/static/images/dist/Artem.jpg'),
         new UsersModel('Alex', 'Kud', 'email@email.com', 'Male', './app/static/images/dist/Alex.jpg')
     ];
+    myProfileObj;
+    ngOnInit() {
+        if (localStorage.getItem('myInfo')) {
+            this.myProfileObj = JSON.parse(localStorage.getItem('myInfo'));
+            this.users = [...this.users, new UsersModel(this.myProfileObj.firstName, this.myProfileObj.lastName, this.myProfileObj.email, this.myProfileObj.gender, this.myProfileObj.ava)];
+        }
+    }
 }
