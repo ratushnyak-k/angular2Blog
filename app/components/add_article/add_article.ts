@@ -27,19 +27,20 @@ export class AddArticle {
             reader.readAsDataURL(input.files[0]);
         }
     }
-    addNewArticle(e){
+    addNewArticle(e) {
         e.preventDefault();
         this.isEdit = true;
-        if (localStorage.getItem('postsList')){
-            ls = JSON.parse(localStorage.getItem('postsList'));
-            console.log(ls[0])
-            for (var i = 0; i < ls.length; i++){
-                this.postsList.push(ls[i]);
+        if (localStorage.getItem('postsList')) {
+            this.ls = JSON.parse(localStorage.getItem('postsList'));
+            console.log(this.ls[0]);
+            for (var i = 0; i < this.ls.length; i++) {
+                this.postsList.push(this.ls[i]);
             }
-        }
-        this.myNewArticle.time = new Date().getTime();
+        };
+        console.log(this.myNewArticle);
+        this.myNewArticle.time = new Date();
         this.postsList.push(this.myNewArticle);
-        console.log(this.postsList)
+        console.log(this.postsList);
 
         localStorage.setItem('postsList', JSON.stringify(this.postsList));
     }

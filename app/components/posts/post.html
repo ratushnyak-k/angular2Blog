@@ -5,15 +5,17 @@
             Author:
             <a class="author" href="#">{{post.author}}</a>
         </div>
-        <div class="time" >{{post.time}}</div>
+        <div class="time">{{post.time}}</div>
     </div>
     <a href="#">
-        <img src="{{post.img}}">
+        <img src="{{post.img}}" *ngIf="post.img">
     </a>
     <div class="post_main">{{post.text}}</div>
     <div class="post_footer">
         <div class="input-group">
-            <select class="form-control" name="" id=""><option value="1">1</option></select>
+            <select class="form-control" #select (change)="onSelectRate(select.value)">
+                <option *ngFor="#rate of currentRate" [value]="rate">{{rate}}</option>
+            </select>
             <span class="input-group-addon">★</span>
         </div>
     </div>

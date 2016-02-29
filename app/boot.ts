@@ -6,5 +6,7 @@ import {
     HashLocationStrategy
 } from 'angular2/router';
 import { AppComponent } from './components/app';
+import { PostService } from './components/posts/post-service';
 
-bootstrap(AppComponent, [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]);
+
+bootstrap(AppComponent, [PostService, ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]);
