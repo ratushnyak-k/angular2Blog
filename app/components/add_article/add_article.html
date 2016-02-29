@@ -21,7 +21,7 @@
             <h1>{{ myNewArticle.title }}</h1>
         </div>
         <div class="input-wrapper">
-            <img src="{{myNewArticle.img}}" alt="">
+            <img src="{{myNewArticle.img}}" *ngIf="myNewArticle.img" alt="">
         </div>
         <div class="input-wrapper">
             <p>{{ myNewArticle.text }}</p>

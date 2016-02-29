@@ -12,6 +12,7 @@ export class AddArticle {
     myFullName = this.localStorageData.firstName + ' ' + this.localStorageData.lastName;
     myNewArticle: PostsModel = new PostsModel('', '', this.myFullName, '', '');
     self;
+    ls;
     isEdit: boolean = false;
     ngOnInit() {
         self = this;
@@ -29,9 +30,14 @@ export class AddArticle {
     addNewArticle(e){
         e.preventDefault();
         this.isEdit = true;
-        this.myNewArticle.time = new Date();
-        var ls = JSON.parse(localStorage.getItem('postsList'));
-        this.postsList.push(ls);
+        if (localStorage.getItem('postsList')){
+            ls = JSON.parse(localStorage.getItem('postsList'));
+            console.log(ls[0])
+            for (var i = 0; i < ls.length; i++){
+                this.postsList.push(ls[i]);
+            }
+        }
+        this.myNewArticle.time = new Date().getTime();
         this.postsList.push(this.myNewArticle);
         console.log(this.postsList)
 
