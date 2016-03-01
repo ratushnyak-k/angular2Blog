@@ -27,9 +27,9 @@
         <label for="">Gender<span class="require-field">*</span></label>
         <div class="form-group">
             <label for="male">Male</label>
-            <input (change)="myProfileObj.gender = 'Male'" [checked]="myProfileObj.gender == 'Male'" #male required id="male" type="radio" name="radiobutton" value="true" >
+            <input (change)="myProfileObj.gender = 'Male'" [checked]="myProfileObj.gender == 'Male'" #male required id="male" type="radio" name="radiobutton">
             <label for="female">Female</label>
-            <input (change)="myProfileObj.gender = 'Female'" [checked]="myProfileObj.gender == 'Female'" #female required id="female" type="radio" name="radiobutton" value="false" >
+            <input (change)="myProfileObj.gender = 'Female'" [checked]="myProfileObj.gender == 'Female'" #female required id="female" type="radio" name="radiobutton">
             <div class="help-block"></div>
         </div>
         <button type="submit" class="btn btn-primary pull-right">Save</button>

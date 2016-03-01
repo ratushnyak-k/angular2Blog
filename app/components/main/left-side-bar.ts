@@ -8,14 +8,14 @@ import { PostService } from '../posts/post-service';
 })
 
 export class LeftSideBar {
+    posts;
     postsList;
-    constructor(postSevice: PostService) {
-        // postSevice.onLoad();
-        this.postsList = postSevice.postsList;
-        console.log(this.postsList);
+    constructor(postService: PostService) {
+        this.posts = postService;
     }
     ratePostsList;
     ngOnInit() {
+        this.postsList = this.posts.retrieve('postsList')
         this.ratePostsList = this.postsList.slice();
         this.ratePostsList.sort(function(a, b) {
             return b.totalRate - a.totalRate;

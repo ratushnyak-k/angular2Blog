@@ -13,10 +13,21 @@
     <div class="post_main">{{post.text}}</div>
     <div class="post_footer">
         <div class="input-group">
-            <select class="form-control" #select (change)="onSelectRate(select.value)">
-                <option *ngFor="#rate of currentRate" [value]="rate">{{rate}}</option>
-            </select>
-            <span class="input-group-addon">★</span>
+            <div class="radio-wrapper">
+                <span>1</span><input (change)="postRated($event)" type="radio" value="1" name="rate">
+            </div>
+            <div class="radio-wrapper">
+                <span>2</span><input (change)="postRated($event)" type="radio" value="2" name="rate">
+            </div>
+            <div class="radio-wrapper">
+                <span>3</span><input (change)="postRated($event)" type="radio" value="3" name="rate">
+            </div>
+            <div class="radio-wrapper">
+                <span>4</span><input (change)="postRated($event)" type="radio" value="4" name="rate">
+            </div>
+            <div class="radio-wrapper">
+                <span>5</span><input (change)="postRated($event)" type="radio" value="5" name="rate">
+            </div>
         </div>
     </div>
 </div>

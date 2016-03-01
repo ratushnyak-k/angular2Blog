@@ -8,13 +8,16 @@ import { PostService } from './post-service';
 })
 
 export class Posts {
+    posts;
     postsList;
-    constructor(postSevice: PostService) {
-        postSevice.onLoad();
-        this.postsList = postSevice.postsList;
+    constructor(postService: PostService) {
+        this.posts = postService;
+    }
+    ngOnInit(){
+        this.postsList = this.posts.retrieve('postsList');
     }
     currentRate = [0, 1, 2, 3, 4, 5];
     onSelectRate(value) {
-        console.log(value)
+        console.log(value);
     }
 }
