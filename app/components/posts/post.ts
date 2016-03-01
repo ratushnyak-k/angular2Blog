@@ -26,7 +26,7 @@ export class Posts {
         var totalRate = +(this.postsList[index]['totalRate']);
 
         this.postsList[index]['myRate'] = newRate;
-        this.postsList[index]['totalRate'] = (newRate + totalRate) / countsOfPeople;
+        this.postsList[index]['totalRate'] = ((newRate + totalRate * countsOfPeople) / countsOfPeople).toFixed(1);
         this.postsList[index]['isRated'] = true;
         this.posts.set('postsList', this.postsList);
     }

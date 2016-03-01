@@ -22,7 +22,6 @@ export class AddArticle {
             this.postsList = value
         })
     }
-
     ngOnInit() {
         self = this;
     }
