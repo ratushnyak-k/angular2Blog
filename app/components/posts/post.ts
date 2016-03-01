@@ -8,13 +8,26 @@ import { PostService } from './post-service';
 })
 
 export class Posts {
+    posts;
     postsList;
-    constructor(postSevice: PostService) {
-        postSevice.onLoad();
-        this.postsList = postSevice.postsList;
+    storage;
+    constructor(public postService: PostService) {
+        this.posts = postService;
+        this.postService.postsChange.subscribe(value =>{
+            this.postsList = value;
+        })
     }
-    currentRate = [0, 1, 2, 3, 4, 5];
-    onSelectRate(value) {
-        console.log(value)
+    ngOnInit(){
+        this.postsList = this.posts.get('postsList');
+    }
+    postRated(value, index) {
+        var newRate = +(value.target.value);
+        var countsOfPeople = +(this.postsList[index]['countsOfPeople']) + 1;
+        var totalRate = +(this.postsList[index]['totalRate']);
+
+        this.postsList[index]['myRate'] = newRate;
+        this.postsList[index]['totalRate'] = ((newRate + totalRate * countsOfPeople) / countsOfPeople).toFixed(1);
+        this.postsList[index]['isRated'] = true;
+        this.posts.set('postsList', this.postsList);
     }
 }

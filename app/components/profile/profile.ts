@@ -24,7 +24,7 @@ export class MyProfile {
     saveMyProfile(e) {
         e.preventDefault();
         this.isEdit = true;
-        if (self.croppedPhoto){
+        if (self.croppedPhoto) {
             this.myProfileObj.ava = self.croppedPhoto;
         }
         localStorage.setItem('myInfo', JSON.stringify(this.myProfileObj));

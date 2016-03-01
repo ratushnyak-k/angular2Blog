@@ -1,4 +1,5 @@
 @import "jeet"
+// edit()
 html, body
     height 100%
 font(font = 'Regular')
@@ -9,7 +10,8 @@ my-app
     cf()
 img
     width 100%
-
+h1, h2, h3, h4
+    margin 0
 .require-field
     color red
 .logo
@@ -51,6 +53,8 @@ main
     col(1/4, cycle:4)
     .post_header
         margin 10px 0
+        a
+            word-wrap break-word
 p
     word-wrap break-word
 .author-wrap
@@ -69,6 +73,10 @@ p
     color #919292
 .post_main
     font-size 13px
+    word-wrap break-word
+    a
+        display block
+        margin-bottom 15px
 .badge
     background-color #F7A300
 .best_posts
@@ -79,8 +87,21 @@ p
 .list-group
     margin 0
 .post_footer
-    .input-group
-        width 76px
+    border-top 1px solid #e7e7e7;
+    margin-top 15px
+    padding-top 10px
+    .isRated
+        font-size 12px
+    .radio-wrapper
+        display inline-block
+        & > *
+            display inline-block
+            vertical-align top
+        span
+            margin-right 3px
+        input
+            margin-top 2px
+            margin-right 10px
 .navbar
     margin-bottom 10px
 .add_article

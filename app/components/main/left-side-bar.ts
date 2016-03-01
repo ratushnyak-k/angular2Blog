@@ -8,17 +8,26 @@ import { PostService } from '../posts/post-service';
 })
 
 export class LeftSideBar {
+    posts;
     postsList;
-    constructor(postSevice: PostService) {
-        // postSevice.onLoad();
-        this.postsList = postSevice.postsList;
-        console.log(this.postsList);
+    constructor(public postService: PostService) {
+        this.posts = postService;
+        this.postService.postsChange.subscribe(value => {
+            this.postsList = value;
+            this.onChangePostsList();
+        })
     }
     ratePostsList;
+    onChangePostsList ():void {
+        if (this.postsList) {
+            this.ratePostsList = this.postsList.slice();
+            this.ratePostsList.sort(function(a, b) {
+                return b.totalRate - a.totalRate;
+            });
+        }
+    }
     ngOnInit() {
-        this.ratePostsList = this.postsList.slice();
-        this.ratePostsList.sort(function(a, b) {
-            return b.totalRate - a.totalRate;
-        });
+        this.postsList = this.posts.get('postsList');
+        this.onChangePostsList();
     }
 }

@@ -1,4 +1,4 @@
-<div class="post" *ngFor="#post of postsList">
+<div class="post" *ngFor="#post of postsList #i=index">
     <div class="post_header">
         <h1><a href="#">{{post.title}}</a></h1>
         <div class="author-wrap">
@@ -7,16 +7,65 @@
         </div>
         <div class="time">{{post.time}}</div>
     </div>
-    <a href="#">
-        <img src="{{post.img}}" *ngIf="post.img">
-    </a>
-    <div class="post_main">{{post.text}}</div>
+    <div class="post_main">
+        <a href="#">
+            <img src="{{post.img}}" *ngIf="post.img">
+        </a>
+        {{post.text}}
+    </div>
     <div class="post_footer">
-        <div class="input-group">
-            <select class="form-control" #select (change)="onSelectRate(select.value)">
-                <option *ngFor="#rate of currentRate" [value]="rate">{{rate}}</option>
-            </select>
-            <span class="input-group-addon">★</span>
+        <div class="input-group" *ngIf="!post.isRated">
+            <div class="radio-wrapper">
+                <span>1</span><input
+                    #rate1
+                    type="radio"
+                    value="1"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 1"
+                    (change)="postRated($event, i)">
+            </div>
+            <div class="radio-wrapper">
+                <span>2</span><input
+                    #rate2
+                    type="radio"
+                    value="2"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 2"
+                    (change)="postRated($event, i)">
+            </div>
+            <div class="radio-wrapper">
+                <span>3</span><input
+                    #rate3
+                    type="radio"
+                    value="3"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 3"
+                    (change)="postRated($event, i)">
+            </div>
+            <div class="radio-wrapper">
+                <span>4</span><input
+                    #rate4
+                    type="radio"
+                    value="4"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 4"
+                    (change)="postRated($event, i)">
+            </div>
+            <div class="radio-wrapper">
+                <span>5</span><input
+                    #rate5
+                    type="radio"
+                    value="5"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 5"
+                    (change)="postRated($event, i)">
+            </div>
+        </div>
+        <div class="isRated" *ngIf="post.isRated">
+            You have already voted
+            <span class="badge">
+                <span>{{post.myRate}}</span> ★
+            </span>
         </div>
     </div>
 </div>

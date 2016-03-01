@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
 import { PostsModel } from '../posts/postsModel';
+import { PostService } from '../posts/post-service';
 
 @Component({
     templateUrl: './app/components/add_article/add_article.html',
@@ -14,6 +15,13 @@ export class AddArticle {
     self;
     ls;
     isEdit: boolean = false;
+    posts;
+    constructor(public postService: PostService) {
+        this.posts = postService;
+        this.postService.postsChange.subscribe(value => {
+            this.postsList = value
+        })
+    }
     ngOnInit() {
         self = this;
     }
@@ -32,16 +40,13 @@ export class AddArticle {
         this.isEdit = true;
         if (localStorage.getItem('postsList')) {
             this.ls = JSON.parse(localStorage.getItem('postsList'));
-            console.log(this.ls[0]);
             for (var i = 0; i < this.ls.length; i++) {
                 this.postsList.push(this.ls[i]);
             }
         };
-        console.log(this.myNewArticle);
         this.myNewArticle.time = new Date();
         this.postsList.push(this.myNewArticle);
-        console.log(this.postsList);
 
-        localStorage.setItem('postsList', JSON.stringify(this.postsList));
+        this.posts.set('postsList', this.postsList);
     }
 }

@@ -7,6 +7,7 @@ export class PostsModel {
         public img: string,
         public myRate: number = 0,
         public totalRate: number = 0,
-        public counstOfPeople: number = 0
+        public countsOfPeople: number = 0,
+        public isRated: boolean = false
     ) {}
 }
