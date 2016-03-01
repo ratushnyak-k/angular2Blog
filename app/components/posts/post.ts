@@ -17,8 +17,15 @@ export class Posts {
     ngOnInit(){
         this.postsList = this.posts.retrieve('postsList');
     }
-    currentRate = [0, 1, 2, 3, 4, 5];
-    postRated(value) {
+    postRated(value, index) {
+        console.log(value)
+        var newRate = +(value.target.value);
+        var countsOfPeople = +(this.postsList[index]['countsOfPeople']) + 1;
+        var totalRate = +(this.postsList[index]['totalRate']);
+
+        this.postsList[index]['myRate'] = newRate;
+        this.postsList[index]['totalRate'] = (newRate + totalRate) / countsOfPeople;
+        this.postsList[index]['isRated'] = true;
         this.posts.store('postsList', this.postsList);
     }
 }

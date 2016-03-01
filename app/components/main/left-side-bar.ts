@@ -10,12 +10,13 @@ import { PostService } from '../posts/post-service';
 export class LeftSideBar {
     posts;
     postsList;
-    constructor(postService: PostService) {
+    constructor(public postService: PostService) {
         this.posts = postService;
     }
     ratePostsList;
     ngOnInit() {
         this.postsList = this.posts.retrieve('postsList')
+        console.log(this.postsList)
         this.ratePostsList = this.postsList.slice();
         this.ratePostsList.sort(function(a, b) {
             return b.totalRate - a.totalRate;
