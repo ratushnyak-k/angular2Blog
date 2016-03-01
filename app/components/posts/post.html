@@ -1,4 +1,4 @@
-<div class="post" *ngFor="#post of postsList">
+<div class="post" *ngFor="#post of postsList #i=index">
     <div class="post_header">
         <h1><a href="#">{{post.title}}</a></h1>
         <div class="author-wrap">
@@ -14,19 +14,49 @@
     <div class="post_footer">
         <div class="input-group">
             <div class="radio-wrapper">
-                <span>1</span><input (change)="postRated($event)" type="radio" value="1" name="rate">
+                <span>1</span><input
+                    #rate1
+                    type="radio"
+                    value="1"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 1"
+                    (change)="postsList[i].myRate = rate1.value; postRated($event)">
             </div>
             <div class="radio-wrapper">
-                <span>2</span><input (change)="postRated($event)" type="radio" value="2" name="rate">
+                <span>2</span><input
+                    #rate2
+                    type="radio"
+                    value="2"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 2"
+                    (change)="postsList[i].myRate = rate2.value; postRated($event)">
             </div>
             <div class="radio-wrapper">
-                <span>3</span><input (change)="postRated($event)" type="radio" value="3" name="rate">
+                <span>3</span><input
+                    #rate3
+                    type="radio"
+                    value="3"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 3"
+                    (change)="postsList[i].myRate = rate3.value; postRated($event)">
             </div>
             <div class="radio-wrapper">
-                <span>4</span><input (change)="postRated($event)" type="radio" value="4" name="rate">
+                <span>4</span><input
+                    #rate4
+                    type="radio"
+                    value="4"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 4"
+                    (change)="postsList[i].myRate = rate4.value; postRated($event)">
             </div>
             <div class="radio-wrapper">
-                <span>5</span><input (change)="postRated($event)" type="radio" value="5" name="rate">
+                <span>5</span><input
+                    #rate5
+                    type="radio"
+                    value="5"
+                    [name]="'rate' + i"
+                    [checked]="postsList[i].myRate == 5"
+                    (change)="postsList[i].myRate = rate5.value; postRated($event)">
             </div>
         </div>
     </div>

@@ -10,14 +10,15 @@ import { PostService } from './post-service';
 export class Posts {
     posts;
     postsList;
-    constructor(postService: PostService) {
+    storage;
+    constructor(public postService: PostService) {
         this.posts = postService;
     }
     ngOnInit(){
         this.postsList = this.posts.retrieve('postsList');
     }
     currentRate = [0, 1, 2, 3, 4, 5];
-    onSelectRate(value) {
-        console.log(value);
+    postRated(value) {
+        this.posts.store('postsList', this.postsList);
     }
 }
