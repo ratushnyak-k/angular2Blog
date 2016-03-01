@@ -8,4 +8,4 @@ import {
 import { AppComponent } from './components/app';
 import { PostService } from './components/posts/post-service';
 
-bootstrap(AppComponent, [PostService, ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]);
+bootstrap(AppComponent, [PostService, ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]).catch(err => console.error(err));;

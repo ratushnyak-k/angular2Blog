@@ -13,12 +13,14 @@ export class Posts {
     storage;
     constructor(public postService: PostService) {
         this.posts = postService;
+        this.postService.postsChange.subscribe(value =>{
+            this.postsList = value;
+        })
     }
     ngOnInit(){
         this.postsList = this.posts.retrieve('postsList');
     }
     postRated(value, index) {
-        console.log(value)
         var newRate = +(value.target.value);
         var countsOfPeople = +(this.postsList[index]['countsOfPeople']) + 1;
         var totalRate = +(this.postsList[index]['totalRate']);

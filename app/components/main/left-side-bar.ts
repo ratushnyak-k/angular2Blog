@@ -12,14 +12,18 @@ export class LeftSideBar {
     postsList;
     constructor(public postService: PostService) {
         this.posts = postService;
+        this.postService.postsChange.subscribe(value => {
+            this.postsList = value
+        })
     }
     ratePostsList;
     ngOnInit() {
-        this.postsList = this.posts.retrieve('postsList')
-        console.log(this.postsList)
-        this.ratePostsList = this.postsList.slice();
-        this.ratePostsList.sort(function(a, b) {
-            return b.totalRate - a.totalRate;
-        });
+        this.postsList = this.posts.retrieve('postsList');
+        if (this.postsList) {
+            this.ratePostsList = this.postsList.slice();
+            this.ratePostsList.sort(function(a, b) {
+                return b.totalRate - a.totalRate;
+            });
+        }
     }
 }
