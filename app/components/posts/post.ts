@@ -18,7 +18,7 @@ export class Posts {
         })
     }
     ngOnInit(){
-        this.postsList = this.posts.retrieve('postsList');
+        this.postsList = this.posts.get('postsList');
     }
     postRated(value, index) {
         var newRate = +(value.target.value);
@@ -28,6 +28,6 @@ export class Posts {
         this.postsList[index]['myRate'] = newRate;
         this.postsList[index]['totalRate'] = (newRate + totalRate) / countsOfPeople;
         this.postsList[index]['isRated'] = true;
-        this.posts.store('postsList', this.postsList);
+        this.posts.set('postsList', this.postsList);
     }
 }

@@ -7,10 +7,12 @@
         </div>
         <div class="time">{{post.time}}</div>
     </div>
-    <a href="#">
-        <img src="{{post.img}}" *ngIf="post.img">
-    </a>
-    <div class="post_main">{{post.text}}</div>
+    <div class="post_main">
+        <a href="#">
+            <img src="{{post.img}}" *ngIf="post.img">
+        </a>
+        {{post.text}}
+    </div>
     <div class="post_footer">
         <div class="input-group" *ngIf="!post.isRated">
             <div class="radio-wrapper">

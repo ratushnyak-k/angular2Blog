@@ -9,14 +9,14 @@ export class PostService {
         this.storage = localStorage;
         this.postsChange = new EventEmitter();
     }
-    public retrieve(key: string): any {
+    public get(key: string): any {
         var item = this.storage.getItem(key);
         if (item && item !== 'undefined') {
             return JSON.parse(this.storage.getItem(key));
         }
         return;
     }
-    public store(key: string, value: any) {
+    public set(key: string, value: any) {
         this.storage.setItem(key, JSON.stringify(value));
         this.postsChange.emit(value);
     }

@@ -48,6 +48,6 @@ export class AddArticle {
         this.myNewArticle.time = new Date();
         this.postsList.push(this.myNewArticle);
 
-        this.posts.store('postsList', this.postsList);
+        this.posts.set('postsList', this.postsList);
     }
 }
