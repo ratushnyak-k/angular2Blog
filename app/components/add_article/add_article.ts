@@ -11,7 +11,7 @@ export class AddArticle {
     postsList = [];
     localStorageData = JSON.parse(localStorage.getItem('myInfo'));
     myFullName = this.localStorageData.firstName + ' ' + this.localStorageData.lastName;
-    myNewArticle: PostsModel = new PostsModel('', '', this.myFullName, '', '');
+    myNewArticle: PostsModel = new PostsModel('', '', '', this.myFullName, '', '');
     self;
     ls;
     isEdit: boolean = false;
@@ -44,8 +44,14 @@ export class AddArticle {
                 this.postsList.push(this.ls[i]);
             }
         };
+        if (this.myNewArticle.text.length > 15) {
+            this.myNewArticle.text_cut = this.myNewArticle.text.slice(0, 100) + '...';
+        } else {
+            this.myNewArticle.text_cut = this.myNewArticle.text;
+        }
         this.myNewArticle.time = new Date();
-        this.postsList.push(this.myNewArticle);
+        console.log(this.myNewArticle)
+        this.postsList.unshift(this.myNewArticle);
 
         this.posts.set('postsList', this.postsList);
     }
