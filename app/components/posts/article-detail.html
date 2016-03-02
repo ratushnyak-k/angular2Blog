@@ -1,0 +1,39 @@
+<div class="input-wrapper">
+    <h1>{{ article.title }}</h1>
+</div>
+<div class="input-wrapper">
+    <img src="{{article.img}}" *ngIf="article.img" alt="">
+</div>
+<div class="input-wrapper">
+    <p>{{ article.text }}</p>
+</div>
+<div class="post_footer">
+    <div class="input-group" *ngIf="!article.isRated">
+        <div class="radio-wrapper">
+            <span>1</span>
+            <input #rate1 type="radio" value="1" [name]="rate" [checked]="article.myRate == 1" (change)="postRated($event, i)">
+        </div>
+        <div class="radio-wrapper">
+            <span>2</span>
+            <input #rate2 type="radio" value="2" [name]="rate" [checked]="article.myRate == 2" (change)="postRated($event, i)">
+        </div>
+        <div class="radio-wrapper">
+            <span>3</span>
+            <input #rate3 type="radio" value="3" [name]="rate" [checked]="article.myRate == 3" (change)="postRated($event, i)">
+        </div>
+        <div class="radio-wrapper">
+            <span>4</span>
+            <input #rate4 type="radio" value="4" [name]="rate" [checked]="article.myRate == 4" (change)="postRated($event, i)">
+        </div>
+        <div class="radio-wrapper">
+            <span>5</span>
+            <input #rate5 type="radio" value="5" [name]="rate" [checked]="article.myRate == 5" (change)="postRated($event, i)">
+        </div>
+    </div>
+    <div class="isRated" *ngIf="article.isRated">
+        You have already voted
+        <span class="badge">
+                    <span>{{article.myRate}}</span> ★
+        </span>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { PostService } from '../posts/post-service';
 export class LeftSideBar {
     posts;
     postsList;
+    isLoggined;
     constructor(public postService: PostService) {
         this.posts = postService;
         this.postService.postsChange.subscribe(value => {
@@ -28,6 +29,7 @@ export class LeftSideBar {
     }
     ngOnInit() {
         this.postsList = this.posts.get('postsList');
+        this.isLoggined = this.posts.get('myInfo');
         this.onChangePostsList();
     }
 }

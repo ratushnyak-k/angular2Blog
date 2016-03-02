@@ -1,6 +1,6 @@
 <div class="post" *ngFor="#post of postsList #i=index">
     <div class="post_header">
-        <h1><a href="#">{{post.title}}</a></h1>
+        <h1><a href="javascript:void(0)" (click)="getThisArticle(i)">{{post.title}}</a></h1>
         <div class="author-wrap">
             Author:
             <a class="author" href="#">{{post.author}}</a>
@@ -11,7 +11,7 @@
         <a href="#">
             <img src="{{post.img}}" *ngIf="post.img">
         </a>
-        {{post.text}}
+        {{post.text_cut}}
     </div>
     <div class="post_footer">
         <div class="input-group" *ngIf="!post.isRated">
