@@ -1,1 +1,8 @@
-<h1>Search</h1>
+<form action="">
+    <div class="form-group">
+        <label class="control-label" for="">Search by posts</label>
+        <input class="form-control" type="text" #searchField (keyup)="searchByPost(searchField.value)">
+    </div>
+</form>
+<posts-list [postsList]="searchPosts" [isSearch]="isSearch"></posts-list>
+<div class="italic-text" *ngIf="!isFound">No matches!</div>
