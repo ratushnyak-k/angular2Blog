@@ -1,6 +1,7 @@
 import { Component, Injectable } from 'angular2/core';
 import { UsersModel } from './userModel';
 import { MyProfile } from '../profile/profile';
+import { PostService } from '../posts/post-service';
 
 @Injectable()
 @Component({
@@ -17,6 +18,10 @@ export class Users {
         new UsersModel('Alex', 'Kud', 'email@email.com', 'Male', './app/static/images/dist/Alex.jpg')
     ];
     myProfileObj;
+    postsService;
+    constructor(postsService: PostService) {
+        this.postsService = postsService;
+    }
     ngOnInit() {
         if (localStorage.getItem('myInfo')) {
             this.myProfileObj = JSON.parse(localStorage.getItem('myInfo'));

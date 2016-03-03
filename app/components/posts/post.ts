@@ -10,8 +10,10 @@ import { PostService } from './post-service';
 })
 
 export class Posts {
+    @Input() isSearch;
+    @Input() postsList;
+    @Input() isFound;
     posts;
-    postsList;
     storage;
     constructor(
         public postService: PostService,
