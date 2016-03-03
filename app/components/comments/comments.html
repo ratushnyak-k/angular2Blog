@@ -1,0 +1,36 @@
+<div class="comments_block">
+    <form action="" class="my-comment" (submit)="onSubmit($event)">
+        <div class="form-group">
+            <label for="">Add your comment</label>
+            <textarea class="form-control" [(ngModel)]="newCommentObj.text"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add comment</button>
+    </form>
+    <div class="comment_wrapper">
+        <div class="comment" *ngFor="#comment of comments">
+            <div class="ava-block">
+                <img [src]="comment.ava">
+            </div>
+            <div class="text-block">
+                <div class="head-comment">
+                    <div>{{comment.author}}</div>
+                    <div class="time">{{comment.time}}</div>
+                </div>
+                <hr>
+                <div *ngIf="!isEdit" class="text-comment">{{comment.text}}</div>
+                <form action="" *ngIf="isEdit">
+                    <div class="form-group">
+                        <label for="">Edit your comment</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save comment</button>
+                </form>
+                <hr>
+                <div class="foot-comment">
+                    <a href="#" (click)="editComment($event)">Edit</a>
+                    <a href="#" class="remove" >✖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,10 +18,7 @@ export class Users {
         new UsersModel('Alex', 'Kud', 'email@email.com', 'Male', './app/static/images/dist/Alex.jpg')
     ];
     myProfileObj;
-    postsService;
-    constructor(postsService: PostService) {
-        this.postsService = postsService;
-    }
+
     ngOnInit() {
         if (localStorage.getItem('myInfo')) {
             this.myProfileObj = JSON.parse(localStorage.getItem('myInfo'));

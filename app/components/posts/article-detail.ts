@@ -2,9 +2,12 @@ import { Component } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 
 import { PostService } from './post-service';
+import { Comments } from '../comments/comments';
+
 
 @Component({
-    templateUrl: './app/components/posts/article-detail.html'
+    templateUrl: './app/components/posts/article-detail.html',
+    directives: [Comments]
 })
 export class ArticleDetail {
     article;

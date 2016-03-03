@@ -28,7 +28,6 @@ export class Search {
             });
             this.isFound = true;
             if(!this.searchPosts.length){
-                console.log(this.searchPosts.length)
                 this.isFound = false;
             }
         } else {
