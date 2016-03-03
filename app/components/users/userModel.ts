@@ -7,4 +7,3 @@ export class UsersModel {
         public ava: string = './app/static/images/dist/no_ava.png'
         ) {}
 }
-

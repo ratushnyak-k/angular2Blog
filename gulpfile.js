@@ -100,4 +100,4 @@ gulp.task('image', ['img:del'], function() {
 gulp.task('img:del', function() {
     del('app/static/images/dist', Gdelete);
 });
-gulp.task('default', ['watch', 'style:dev', 'image']);
+gulp.task('default', ['compile-ts', 'watch', 'style:dev', 'image']);

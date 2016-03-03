@@ -2,13 +2,13 @@
     <div *ngIf="!isEdit">
         <div class="form-group">
             <label class="control-label" for="">First Name<span class="require-field">*</span></label>
-            <input class="form-control" [(ngModel)]="myProfileObj.firstName" required type="text">
-            <div class="help-block"></div>
+            <input required id="firstName" class="form-control" [(ngModel)]="myProfileObj.firstName" (keyup)='checkValidation($event)' type="text">
+            <div class="help-block" *ngIf="validationObj.firstName">It is not a name</div>
         </div>
         <div class="form-group">
             <label class="control-label" for="">Last Name<span class="require-field">*</span></label>
-            <input class="form-control" [(ngModel)]="myProfileObj.lastName" required type="text" >
-            <div class="help-block"></div>
+            <input required id="lastName" class="form-control" [(ngModel)]="myProfileObj.lastName" (keyup)='checkValidation($event)' type="text" >
+            <div class="help-block" *ngIf="validationObj.lastName">It is not a name</div>
         </div>
         <div class="form-group">
             <label for="">Choose your avatar</label>
@@ -17,20 +17,18 @@
             </div>
             <input class="" type="file" accept="image/png" (change)="readURL($event.target)">
             <div class="btn btn-primary upload-result">Crop</div>
-            <div class="help-block"></div>
         </div>
         <div class="form-group">
             <label class="control-label" for="email">Email<span class="require-field">*</span></label>
-            <input class="form-control" type="text" [(ngModel)]="myProfileObj.email" required>
-            <div class="help-block"></div>
+            <input required id="email" class="form-control" type="text" (keyup)='checkValidation($event)' [(ngModel)]="myProfileObj.email">
+            <div class="help-block" *ngIf="validationObj.email">It is not an email</div>
         </div>
         <label for="">Gender<span class="require-field">*</span></label>
-        <div class="form-group">
+        <div class="form-group ">
             <label for="male">Male</label>
-            <input (change)="myProfileObj.gender = 'Male'" [checked]="myProfileObj.gender == 'Male'" #male required id="male" type="radio" name="radiobutton">
+            <input (change)="myProfileObj.gender = 'Male'" [checked]="myProfileObj.gender == 'Male'" #male id="male" type="radio" name="radiobutton">
             <label for="female">Female</label>
-            <input (change)="myProfileObj.gender = 'Female'" [checked]="myProfileObj.gender == 'Female'" #female required id="female" type="radio" name="radiobutton">
-            <div class="help-block"></div>
+            <input (change)="myProfileObj.gender = 'Female'" [checked]="myProfileObj.gender == 'Female'" #female id="female" type="radio" name="radiobutton">
         </div>
         <button type="submit" class="btn btn-primary pull-right">Save</button>
     </div>

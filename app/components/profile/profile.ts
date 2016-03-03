@@ -1,5 +1,6 @@
 import { Component, Injectable } from 'angular2/core';
 import { UsersModel } from '../users/userModel';
+import { ValidationModel } from './validationModel';
 
 @Injectable()
 @Component({
@@ -10,7 +11,8 @@ import { UsersModel } from '../users/userModel';
 
 export class MyProfile {
     avaInput;
-    myProfileObj: UsersModel = new UsersModel('', '', '', '', './app/static/images/dist/no_ava.png');
+    myProfileObj: UsersModel = new UsersModel('', '', '', 'not specified', './app/static/images/dist/no_ava.png');
+    validationObj: ValidationModel = new ValidationModel();
     isEdit: boolean = false;
     self;
     croppedPhoto;
@@ -21,6 +23,27 @@ export class MyProfile {
             this.isEdit = true;
         }
     }
+    checkValidation(e) {
+        const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        const namePattern = /^[A-Za-z ]{2,20}$/;
+
+        var isFirstName = e.target.id === 'firstName';
+        var isLastName = e.target.id === 'lastName';
+        var isEmail = e.target.id === 'email';
+        var thisFieldValue = e.target.value;
+
+        if (thisFieldValue) {
+            if (isFirstName) {
+                this.validationObj['firstName'] = !namePattern.test(thisFieldValue);
+            }
+            if (isLastName) {
+                this.validationObj['lastName'] = !namePattern.test(thisFieldValue);
+            }
+            if (isEmail) {
+                this.validationObj['email'] = !emailPattern.test(thisFieldValue);
+            }
+        }
+    }
     saveMyProfile(e) {
         e.preventDefault();
         this.isEdit = true;
@@ -28,6 +51,7 @@ export class MyProfile {
             this.myProfileObj.ava = self.croppedPhoto;
         }
         localStorage.setItem('myInfo', JSON.stringify(this.myProfileObj));
+
     }
     editMyProfile(e) {
         e.preventDefault();
