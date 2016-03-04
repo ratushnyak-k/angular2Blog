@@ -13,7 +13,10 @@ export class Posts {
     @Input() isSearch;
     @Input() postsList;
     @Input() isFound;
+    @Input() canRate = true;
     posts;
+    commonCommentsArray = [];
+    countOfComments = [];
     storage;
     constructor(
         public postService: PostService,
@@ -21,13 +24,21 @@ export class Posts {
         this.posts = postService;
         this.postService.postsChange.subscribe(value => {
             this.postsList = value;
-        })
+        });
     }
     ngOnInit() {
         this.postsList = this.posts.get('postsList');
+        this.commonCommentsArray = this.posts.get('commonCommentsArray');
+        for (var i = 0; i < this.commonCommentsArray.length; i++) {
+            if (this.commonCommentsArray[i]) {
+                this.countOfComments.push(this.commonCommentsArray[i].length);
+            } else {
+                this.countOfComments.push(0);
+            }
+        }
     }
-    getThisArticle(index){
-        this._router.navigate( ['ArticleDetail', { id: index }] );
+    getThisArticle(index) {
+        this._router.navigate(['ArticleDetail', { id: index }]);
     }
     postRated(value, index) {
         var newRate = +(value.target.value);

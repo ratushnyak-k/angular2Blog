@@ -1,5 +1,5 @@
 <div class="comments_block">
-    <form action="" class="my-comment" (submit)="onSubmit($event)">
+    <form action="" class="my-comment" (submit)="onAddNewComment($event)">
         <div class="form-group">
             <label for="">Add your comment</label>
             <textarea class="form-control" [(ngModel)]="newCommentObj.text"></textarea>
@@ -7,7 +7,7 @@
         <button type="submit" class="btn btn-primary">Add comment</button>
     </form>
     <div class="comment_wrapper">
-        <div class="comment" *ngFor="#comment of comments">
+        <div class="comment" *ngFor="#comment of comments #i=index">
             <div class="ava-block">
                 <img [src]="comment.ava">
             </div>
@@ -17,18 +17,18 @@
                     <div class="time">{{comment.time}}</div>
                 </div>
                 <hr>
-                <div *ngIf="!isEdit" class="text-comment">{{comment.text}}</div>
-                <form action="" *ngIf="isEdit">
+                <div *ngIf="!comment.isEdit" class="text-comment">{{comment.text}}</div>
+                <form *ngIf="comment.isEdit" (submit)="saveEditComment($event, i)">
                     <div class="form-group">
                         <label for="">Edit your comment</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea [(ngModel)]="comment.text" class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Save comment</button>
                 </form>
                 <hr>
                 <div class="foot-comment">
-                    <a href="#" (click)="editComment($event)">Edit</a>
-                    <a href="#" class="remove" >✖</a>
+                    <a href="#" (click)="editComment($event, i)">Edit</a>
+                    <a href="#" class="remove" (click)="removeComment($event, i)">✖</a>
                 </div>
             </div>
         </div>

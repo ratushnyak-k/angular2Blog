@@ -4,5 +4,5 @@
         <input class="form-control" type="text" #searchField (keyup)="searchByPost(searchField.value)">
     </div>
 </form>
-<posts-list [postsList]="searchPosts" [isSearch]="isSearch"></posts-list>
+<posts-list [postsList]="searchPosts" [isSearch]="isSearch" [canRate]="canRate"></posts-list>
 <div class="italic-text" *ngIf="!isFound">No matches!</div>

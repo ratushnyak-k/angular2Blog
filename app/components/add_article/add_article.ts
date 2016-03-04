@@ -1,10 +1,12 @@
 import { Component } from 'angular2/core';
 import { PostsModel } from '../posts/postsModel';
 import { PostService } from '../posts/post-service';
+import { CommentService } from '../comments/comment-service';
 
 @Component({
     templateUrl: './app/components/add_article/add_article.html',
-    selector: 'add-article'
+    selector: 'add-article',
+    providers: [CommentService]
 })
 
 export class AddArticle {
@@ -16,14 +18,20 @@ export class AddArticle {
     ls;
     isEdit: boolean = false;
     posts;
-    constructor(public postService: PostService) {
+    commentService;
+    commonCommentsArray;
+    constructor(public postService: PostService, commentService: CommentService) {
         this.posts = postService;
         this.postService.postsChange.subscribe(value => {
-            this.postsList = value
-        })
+            this.postsList = value;
+        });
+        this.commentService = commentService;
+        this.commonCommentsArray = commentService.get('commonCommentsArray');
     }
     ngOnInit() {
         self = this;
+        this.commonCommentsArray = [...this.commonCommentsArray, []];
+        this.commentService.set('commonCommentsArray', this.commonCommentsArray);
     }
     readURL(input) {
         if (input.files && input.files[0]) {
@@ -50,8 +58,8 @@ export class AddArticle {
             this.myNewArticle.text_cut = this.myNewArticle.text;
         }
         this.myNewArticle.time = new Date();
-        console.log(this.myNewArticle)
-        this.postsList.unshift(this.myNewArticle);
+
+        this.postsList.push(this.myNewArticle);
 
         this.posts.set('postsList', this.postsList);
     }

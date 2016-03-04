@@ -3,6 +3,7 @@ export class CommentsModel {
         public time: string,
         public text: string,
         public ava: string,
-        public author: string
+        public author: string,
+        public isEdit: boolean = false
         ) {}
 }

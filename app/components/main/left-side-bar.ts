@@ -16,7 +16,7 @@ export class LeftSideBar {
         this.postService.postsChange.subscribe(value => {
             this.postsList = value;
             this.onChangePostsList();
-        })
+        });
     }
     ratePostsList;
     onChangePostsList ():void {

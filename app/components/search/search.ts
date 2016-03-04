@@ -15,6 +15,7 @@ export class Search {
     searchPosts;
     isSearch: boolean = true;
     isFound: boolean = true;
+    canRate: boolean = false;
     posts;
     constructor(posts: PostService) {
         this.posts = posts.get('postsList');
@@ -27,7 +28,7 @@ export class Search {
                 return i.title.toLowerCase().indexOf(query) >= 0;
             });
             this.isFound = true;
-            if(!this.searchPosts.length){
+            if (!this.searchPosts.length) {
                 this.isFound = false;
             }
         } else {
